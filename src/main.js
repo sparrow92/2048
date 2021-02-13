@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './assets/css/index.css'
 import './registerServiceWorker'
 import Vue2TouchEvents from 'vue2-touch-events'
 import autofocus from "vue-autofocus-directive"
