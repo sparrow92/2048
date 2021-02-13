@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
+import Vue2TouchEvents from 'vue2-touch-events'
+import autofocus from "vue-autofocus-directive"
+
+Vue.directive("autofocus", autofocus);
+Vue.use(Vue2TouchEvents)
 
 Vue.config.productionTip = false
 
