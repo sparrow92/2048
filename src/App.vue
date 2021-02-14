@@ -1,28 +1,47 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Wrapper @up="up" @right="right" @down="down" @left="left">
+    <Gameboard>
+      <span class="text-5xl">{{ direction }}</span>
+    </Gameboard>
+  </Wrapper>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Wrapper from './components/Wrapper.vue'
+import Gameboard from './components/Gameboard.vue'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    Wrapper,
+    Gameboard
+  },
+
+  data() {
+    return {
+      direction: ''
+    };
+  },
+
+  methods: {
+    up: function () {
+      this.direction = 'Góra'
+    },
+
+    down: function () {
+      this.direction = 'Dół'
+    },
+
+    left: function () {
+      this.direction = 'Lewo'
+    },
+
+    right: function () {
+      this.direction = 'Prawo'
+    },
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="postcss">
+
 </style>
