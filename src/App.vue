@@ -2,7 +2,7 @@
   <Wrapper @up="up" @right="right" @down="down" @left="left">
     <Header/>
     <Gameboard>
-      <span class="block test__ocb text-5xl">{{ direction }}</span>
+      <Tile :x="x" :y="y" :value="16" />
     </Gameboard>
     <Footer/>
   </Wrapper>
@@ -12,6 +12,7 @@
 import Wrapper from './components/Wrapper.vue'
 import Header from './components/Header.vue'
 import Gameboard from './components/Gameboard.vue'
+import Tile from './components/Tile.vue'
 import Footer from './components/Footer.vue'
 
 export default {
@@ -19,40 +20,36 @@ export default {
     Wrapper,
     Header,
     Gameboard,
+    Tile,
     Footer
   },
 
   data() {
     return {
-      direction: ''
+      x: 0,
+      y: 0
     };
   },
 
   methods: {
     up: function () {
-      this.direction = 'Góra'
+      --this.y
     },
 
     down: function () {
-      this.direction = 'Dół'
+      ++this.y
     },
 
     left: function () {
-      this.direction = 'Lewo'
+      --this.x
     },
 
     right: function () {
-      this.direction = 'Prawo'
+      ++this.x
     },
   }
 }
 </script>
 
 <style lang="postcss">
-.test {
-  @apply bg-red-500;
-  &__ocb {
-    @apply bg-red-700;
-  }
-}
 </style>
