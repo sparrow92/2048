@@ -1,8 +1,8 @@
 <template>
   <Wrapper @up="up" @right="right" @down="down" @left="left">
-    <Header/>
+    <Header :score="value"/>
     <Gameboard>
-      <Tile :x="x" :y="y" :value="64" />
+      <Tile :x="x" :y="y" :value="value" />
     </Gameboard>
     <Footer/>
   </Wrapper>
@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       x: 0,
-      y: 0
+      y: 0,
+      value: 2
     };
   },
 
@@ -46,6 +47,7 @@ export default {
 
     right: function () {
       ++this.x
+      this.value *= 2;
     },
   }
 }
