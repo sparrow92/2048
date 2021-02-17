@@ -3,8 +3,7 @@
     <div class="gameboard__inner">
       <slot/>
     </div>
-    
-    <div class="tile-slot" v-for="(item,index) in 16" :key="index"></div>
+    <div class="tile-slot" v-for="(item, index) in 16" :key="index"></div>
   </div>
 </template>
 
@@ -15,13 +14,13 @@ export default {
 
 <style lang="postcss" scoped>
   .gameboard {
-    @apply relative bg-brown-400 rounded-lg grid grid-rows-4 grid-flow-col gap-4 p-4;
+    @apply relative grid grid-rows-4 grid-flow-col gap-4 bg-brown-400 rounded-lg p-4;
     width: 500px;
     height: 500px; 
   }
 
   .gameboard__inner {
-    @apply inset-0 absolute m-2;
+    @apply absolute inset-0 m-2;
   }
 
   .tile-slot {
