@@ -2,7 +2,7 @@
   <Wrapper @up="up" @right="right" @down="down" @left="left">
     <Header/>
     <Gameboard>
-      <Tile :x="x" :y="y" :value="16" />
+      <Tile :x="x" :y="y" :value="64" />
     </Gameboard>
     <Footer/>
   </Wrapper>

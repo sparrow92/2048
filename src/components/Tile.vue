@@ -1,6 +1,6 @@
 <template>
-  <div class="tile" :class="`column-${x} row-${y}`">
-    <div class="tile__inner">
+  <div class="tile__wrapper" :class="`column-${x} row-${y}`">
+    <div :class="`tile tile--${value}`">
       {{ value }}
     </div>
   </div>
@@ -17,12 +17,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .tile {
+  .tile__wrapper {
     @apply absolute transition-all duration-75 ease-in w-1/4 h-1/4 p-2;
-  }
-
-  .tile__inner {
-    @apply flex items-center justify-center h-full w-full bg-brown-700 rounded text-brown-300 text-4xl font-bold;
   }
 
   .column-0 { 
@@ -56,4 +52,96 @@ export default {
   .row-3 { 
     @apply top-3/4; 
   }
+
+  .tile {
+    @apply flex items-center justify-center h-full w-full bg-brown-700 rounded text-brown-300 text-4xl font-bold;
+  }
+
+  .tile--2 {
+    background: #ede3da;
+    color: #766e66;
+    @apply text-5xl;
+  }
+
+  .tile--4 {
+    background: #ecdfc9;
+    color: #766e66;
+    @apply text-5xl;
+  }
+
+  .tile--8 {
+    background: #edae7c;
+    color: #fff;
+    @apply text-5xl;
+  }
+
+  .tile--16 {
+    background: #ef9067;
+    color: #fff;
+    @apply text-5xl;
+  }
+
+  .tile--32 {
+    background: #ef7562;
+    color: #fff;
+    @apply text-5xl;
+  }
+
+  .tile--64 {
+    background: #ee5340;
+    color: #fff;
+    @apply text-5xl;
+  }
+
+  .tile--128 {
+    background: #eacd78;
+    color: #fff;
+    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .tile--256 {
+    background: #eaca68;
+    color: #fff;
+    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .tile--512 {
+    background: #eac559;
+    color: #fff;
+    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .tile--1024 {
+    background: #e9c24a;
+    color: #fff;
+    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .tile--2048 {
+    background: #e9bf3d;
+    color: #fff;
+    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .tile--4096 {
+    background: #363636;
+    color: #fff;
+  }
+
+  .tile--8192 {
+    background: #363636;
+    color: #fff;
+  }
+
+  .tile--16384 {
+    background: #363636;
+    color: #fff;
+    @apply text-3xl;
+  }
+
 </style>
