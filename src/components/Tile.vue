@@ -18,7 +18,7 @@ export default {
 
 <style lang="postcss" scoped>
   .tile {
-    @apply absolute transition-all ease-in  w-1/4 h-1/4 p-2;
+    @apply absolute transition-all duration-75 ease-in  w-1/4 h-1/4 p-2;
   }
   .tile__inner {
     @apply bg-brown-700 text-brown-300 font-bold rounded flex items-center justify-center h-full w-full;

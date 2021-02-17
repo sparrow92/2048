@@ -21,7 +21,7 @@ export default {
   }
 
   .gameboard__inner {
-    @apply top-0 left-0 border-2 absolute h-full w-full bg-brown-100 opacity-50;
+    @apply inset-0 absolute m-2;
   }
 
   .tile-slot {
