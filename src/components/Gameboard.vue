@@ -24,6 +24,7 @@ export default {
   }
 
   .tile-slot {
-    @apply rounded bg-brown-300;
+    background-color: rgb(182, 179, 177);
+    @apply rounded;
   }
 </style>

@@ -22,7 +22,7 @@ export default {
 
 <style lang="postcss" scoped>
   .footer {
-    @apply flex items-center text-sm mt-5;
+    @apply flex items-center text-brown-600 text-sm mt-5;
   }
 
   a {
@@ -34,7 +34,7 @@ export default {
   }
 
   .footer__button {
-    @apply flex items-center bg-gray-50 font-bold leading-none ml-2 rounded border border-gray-500 py-1 px-2;
+    @apply flex items-center bg-gray-50 text-gray-800 font-bold leading-none ml-2 rounded border border-gray-300 py-1 px-2;
   }
 
   img {

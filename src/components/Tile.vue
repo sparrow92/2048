@@ -1,6 +1,6 @@
 <template>
   <div class="tile__wrapper" :class="`column-${x} row-${y}`">
-    <div :class="`tile tile--${value}`">
+    <div :class="[`tile tile--${value}`, { 'shine':  isShining}]">
       {{ value }}
     </div>
   </div>
@@ -13,6 +13,12 @@ export default {
     y: Number,
     value: Number
   },
+
+  computed: {
+    isShining: function() { 
+      return this.value > 64 && this.value < 4048
+    }
+  }
 }
 </script>
 
@@ -57,6 +63,10 @@ export default {
     @apply flex items-center justify-center h-full w-full bg-brown-700 rounded text-brown-300 text-4xl font-bold;
   }
 
+  .shine {
+    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
   .tile--2 {
     background: #ede3da;
     color: #766e66;
@@ -91,36 +101,26 @@ export default {
 
   .tile--128 {
     background: #eacd78;
-    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     @apply text-white;
   }
 
   .tile--256 {
     background: #eaca68;
-    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     @apply text-white;
   }
 
   .tile--512 {
     background: #eac559;
-    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     @apply text-white;
   }
 
   .tile--1024 {
     background: #e9c24a;
-    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     @apply text-white;
   }
 
   .tile--2048 {
     background: #e9bf3d;
-    box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     @apply text-white;
   }
 

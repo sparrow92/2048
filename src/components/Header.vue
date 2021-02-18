@@ -5,15 +5,13 @@
       <span class="header__score--title">score:</span>
       <span class="header__score--amount">{{ animatedScore }}</span>
     </div>
-    <div class="header__score">
+    <!-- <div class="header__score">
       <span class="header__score--title">best score:</span>
       <span class="header__score--amount">{{ animatedBestScore }}</span>
-    </div>
-    <div>
-      <button class="header__button" v-on:click="newGame">
-        <strong>New Game</strong>
-      </button>
-    </div>
+    </div> -->
+    <button class="header__button" v-on:click="newGame">
+      New Game
+    </button>
   </div>
 </template>
 
@@ -73,7 +71,7 @@ export default {
   }
 
   .header__brand {
-    @apply text-brown-500 text-2xl font-bold;
+    @apply text-brown-500 font-bold mr-10 flex justify-center h-full text-6xl leading-none;
   }
 
   .header__score {
@@ -81,14 +79,14 @@ export default {
   }
 
   .header__score--title {
-    @apply text-sm mb-2;
+    @apply text-xs font-bold text-brown-700 mb-0;
   }
 
   .header__score--amount {
-    @apply text-brown-700 text-lg;
+    @apply text-brown-700 font-bold text-xl;
   }
 
   .header__button {
-    @apply text-brown-700 bg-yellow-300 p-4 text-lg rounded;
+    @apply flex items-center justify-center font-bold text-brown-700 bg-yellow-300 py-4 px-6 text-xl rounded ml-auto;
   }
 </style>
