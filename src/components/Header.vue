@@ -68,41 +68,31 @@ export default {
 
 <style lang="postcss" scoped>
   .header {
-    width: 500px;;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    width: 500px;
+    @apply flex justify-between items-center mb-5;
   }
 
   .header__brand {
-    font-size: 3.4em;
-    font-weight: bold;
     color: #776e65;
+    @apply text-2xl font-bold;
   }
 
   .header__score {
-    display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
+    @apply flex flex-col uppercase;
   }
 
   .header__score--title {
-    font-size: 0.7rem;
-    margin-bottom: 7px;
+    @apply text-sm mb-2;
   }
 
   .header__score--amount {
-    font-size: 1.9rem;
     color: #363636;
+    @apply text-lg;
   }
 
   .header__button {
     color: #363636;
-    background: #ffd83d;
-    font-size: 1.5em;
-    padding: 15px;
-    border-radius: 5px;
+    background-color: #ffd83d;
+    @apply p-4 text-lg rounded;
   }
 </style>

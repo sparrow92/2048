@@ -22,35 +22,23 @@ export default {
 
 <style lang="postcss" scoped>
   .footer {
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
+    @apply flex items-center text-sm mt-5;
   }
 
   a {
-    text-decoration: none;
     color: #3273dc;
+    @apply no-underline;
   }
 
   a:visited {
-    color: none;
+    color: #3273dc;
   }
 
   .footer__button {
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    padding: 3px 8px;
-    line-height: 1;
-    border: 1px solid rgb(197, 196, 196);
-    margin-left: 7px;
-    font-weight: bold;
-    background: #eee;
+    @apply flex items-center bg-gray-50 font-bold leading-none ml-2 rounded border border-gray-500 py-1 px-2;
   }
 
   img {
-    width: 20px;
-    margin-right: 3px;
+    @apply w-5 mr-1;
   }
 </style>
