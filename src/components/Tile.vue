@@ -71,77 +71,72 @@ export default {
 
   .tile--8 {
     background: #edae7c;
-    color: #fff;
-    @apply text-5xl;
+    @apply text-white text-5xl;
   }
 
   .tile--16 {
     background: #ef9067;
-    color: #fff;
-    @apply text-5xl;
+    @apply text-white text-5xl;
   }
 
   .tile--32 {
     background: #ef7562;
-    color: #fff;
-    @apply text-5xl;
+    @apply text-white text-5xl;
   }
 
   .tile--64 {
     background: #ee5340;
-    color: #fff;
-    @apply text-5xl;
+    @apply text-white text-5xl;
   }
 
   .tile--128 {
     background: #eacd78;
-    color: #fff;
     box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply text-white;
   }
 
   .tile--256 {
     background: #eaca68;
-    color: #fff;
     box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply text-white;
   }
 
   .tile--512 {
     background: #eac559;
-    color: #fff;
     box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply text-white;
   }
 
   .tile--1024 {
     background: #e9c24a;
-    color: #fff;
     box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply text-white;
   }
 
   .tile--2048 {
     background: #e9bf3d;
-    color: #fff;
     box-shadow: 0px 0px 22px 3px rgba(234, 205, 120, 0.5),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply text-white;
   }
 
   .tile--4096 {
     background: #363636;
-    color: #fff;
+    @apply text-white;
   }
 
   .tile--8192 {
     background: #363636;
-    color: #fff;
+    @apply text-white;
   }
 
   .tile--16384 {
     background: #363636;
-    color: #fff;
-    @apply text-3xl;
+    @apply text-3xl text-white;
   }
 
 </style>

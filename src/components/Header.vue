@@ -73,8 +73,7 @@ export default {
   }
 
   .header__brand {
-    color: #776e65;
-    @apply text-2xl font-bold;
+    @apply text-brown-500 text-2xl font-bold;
   }
 
   .header__score {
@@ -86,13 +85,10 @@ export default {
   }
 
   .header__score--amount {
-    color: #363636;
-    @apply text-lg;
+    @apply text-brown-700 text-lg;
   }
 
   .header__button {
-    color: #363636;
-    background-color: #ffd83d;
-    @apply p-4 text-lg rounded;
+    @apply text-brown-700 bg-yellow-300 p-4 text-lg rounded;
   }
 </style>

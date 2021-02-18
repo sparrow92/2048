@@ -26,12 +26,11 @@ export default {
   }
 
   a {
-    color: #3273dc;
-    @apply no-underline;
+    @apply text-blue-600 no-underline;
   }
 
   a:visited {
-    color: #3273dc;
+    @apply text-blue-600;
   }
 
   .footer__button {
