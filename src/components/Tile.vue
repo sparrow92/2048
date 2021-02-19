@@ -68,75 +68,54 @@ export default {
   }
 
   .tile--2 {
-    background: #ede3da;
-    color: #766e66;
-    @apply text-5xl;
+    @apply bg-cream-1 text-brown-500 text-5xl;
   }
 
   .tile--4 {
-    background: #ecdfc9;
-    color: #766e66;
-    @apply text-5xl;
+    @apply bg-cream-2 text-brown-500 text-5xl;
   }
 
   .tile--8 {
-    background: #edae7c;
-    @apply text-white text-5xl;
+    @apply bg-orange-1 text-white text-5xl;
   }
 
   .tile--16 {
-    background: #ef9067;
-    @apply text-white text-5xl;
+    @apply bg-orange-2 text-white text-5xl;
   }
 
   .tile--32 {
-    background: #ef7562;
-    @apply text-white text-5xl;
+    @apply bg-red-1 text-white text-5xl;
   }
 
   .tile--64 {
-    background: #ee5340;
-    @apply text-white text-5xl;
+    @apply bg-red-2 text-white text-5xl;
   }
 
   .tile--128 {
-    background: #eacd78;
-    @apply text-white;
+    @apply bg-yellow-1 text-white;
   }
 
   .tile--256 {
-    background: #eaca68;
-    @apply text-white;
+    @apply bg-yellow-2 text-white;
   }
 
   .tile--512 {
-    background: #eac559;
-    @apply text-white;
+    @apply bg-yellow-3 text-white;
   }
 
   .tile--1024 {
-    background: #e9c24a;
-    @apply text-white;
+    @apply bg-yellow-4 text-white;
   }
 
   .tile--2048 {
-    background: #e9bf3d;
-    @apply text-white;
+    @apply bg-yellow-5 text-white;
   }
 
   .tile--4096 {
-    background: #363636;
-    @apply text-white;
+    @apply bg-gray-1 text-white;
   }
 
   .tile--8192 {
-    background: #363636;
-    @apply text-white;
+    @apply bg-gray-1 text-white;
   }
-
-  .tile--16384 {
-    background: #363636;
-    @apply text-3xl text-white;
-  }
-
 </style>

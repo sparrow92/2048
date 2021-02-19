@@ -5,10 +5,6 @@
       <span class="header__score--title">score:</span>
       <span class="header__score--amount">{{ animatedScore }}</span>
     </div>
-    <!-- <div class="header__score">
-      <span class="header__score--title">best score:</span>
-      <span class="header__score--amount">{{ animatedBestScore }}</span>
-    </div> -->
     <button class="header__button" v-on:click="newGame">
       New Game
     </button>
@@ -25,21 +21,16 @@ export default {
 
   data: function() {
     return {
-      bestScore: 0,
-      tweenedScore: 0,
-      tweenedBestScore: 0
+      tweenedScore: 0
     };
   },
 
   computed: {
-    animatedBestScore: function() {
-      return this.tweenedBestScore.toFixed(0);
-    },
-
     animatedScore: function() {
       return this.tweenedScore.toFixed(0);
     }
   },
+  
   watch: {
     score: function(newValue) {
       if (newValue == 0) {
@@ -49,10 +40,6 @@ export default {
       if (newValue > this.bestScore) {
         this.bestScore = this.score;
       }
-    },
-
-    bestScore: function(newValue) {
-      TweenLite.to(this.$data, 0.5, { tweenedBestScore: newValue });
     }
   },
 
