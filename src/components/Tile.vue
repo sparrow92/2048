@@ -60,7 +60,7 @@ export default {
   }
 
   .tile {
-    @apply flex items-center justify-center h-full w-full bg-brown-700 rounded text-brown-300 text-4xl font-bold;
+    @apply flex items-center justify-center h-full w-full bg-brown-700 rounded text-brown-300 text-2xl sm:text-4xl font-bold;
   }
 
   .shine {
@@ -68,27 +68,27 @@ export default {
   }
 
   .tile--2 {
-    @apply bg-cream-1 text-brown-500 text-5xl;
+    @apply bg-cream-1 text-brown-500 text-3xl sm:text-5xl;
   }
 
   .tile--4 {
-    @apply bg-cream-2 text-brown-500 text-5xl;
+    @apply bg-cream-2 text-brown-500 text-3xl sm:text-5xl;
   }
 
   .tile--8 {
-    @apply bg-orange-1 text-white text-5xl;
+    @apply bg-orange-1 text-white text-3xl sm:text-5xl;
   }
 
   .tile--16 {
-    @apply bg-orange-2 text-white text-5xl;
+    @apply bg-orange-2 text-white text-3xl sm:text-5xl;
   }
 
   .tile--32 {
-    @apply bg-red-1 text-white text-5xl;
+    @apply bg-red-1 text-white text-3xl sm:text-5xl;
   }
 
   .tile--64 {
-    @apply bg-red-2 text-white text-5xl;
+    @apply bg-red-2 text-white text-3xl sm:text-5xl;
   }
 
   .tile--128 {
