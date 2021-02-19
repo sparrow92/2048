@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import "animate.css";
 import './assets/css/tailwind.css'
 import './registerServiceWorker'
 import Vue2TouchEvents from 'vue2-touch-events'
