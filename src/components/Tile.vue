@@ -60,7 +60,7 @@ export default {
   }
 
   .tile {
-    @apply flex items-center justify-center h-full w-full bg-brown-700 rounded text-brown-300 text-2xl sm:text-4xl font-bold;
+    @apply flex items-center justify-center h-full w-full bg-gray-1 text-white rounded text-2xl sm:text-4xl font-bold;
   }
 
   .shine {
@@ -109,13 +109,5 @@ export default {
 
   .tile--2048 {
     @apply bg-yellow-5 text-white;
-  }
-
-  .tile--4096 {
-    @apply bg-gray-1 text-white;
-  }
-
-  .tile--8192 {
-    @apply bg-gray-1 text-white;
   }
 </style>
