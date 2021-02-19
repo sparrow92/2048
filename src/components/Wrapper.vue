@@ -40,6 +40,6 @@ export default {
 
 <style lang="postcss" scoped>
   .wrapper {
-    @apply min-h-screen w-screen bg-brown-200 flex flex-col items-center justify-center;
+    @apply min-h-screen w-screen bg-brown-200 flex flex-col items-center justify-center outline-none;
   }
 </style>
