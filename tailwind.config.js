@@ -21,6 +21,11 @@ module.exports = {
         'yellow-5': '#e9bf3d',
         'gray-1': '#363636'
       },
+
+      spacing: {
+        '300': '300px',
+        '500': '500px',
+      }
     },
   },
   variants: {

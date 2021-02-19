@@ -12,7 +12,9 @@
     tabindex="-1"
     class="wrapper"
   >
-    <slot/>
+    <div class="wrapper__inner">
+      <slot/>
+    </div>
   </div>
 </template>
 
@@ -40,6 +42,10 @@ export default {
 
 <style lang="postcss" scoped>
   .wrapper {
-    @apply min-h-screen w-screen bg-brown-200 flex flex-col items-center justify-center outline-none;
+    @apply min-h-screen w-screen bg-brown-200 flex items-center justify-center outline-none;
+
+    &__inner {
+      @apply flex flex-col items-center w-300 sm:w-500;
+    }
   }
 </style>
