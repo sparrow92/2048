@@ -24,7 +24,7 @@ export default {
 
 <style lang="postcss" scoped>
   .tile__wrapper {
-    @apply absolute transition-all duration-75 ease-in w-1/4 h-1/4 p-1 sm:p-2;
+    @apply absolute transition-all duration-50 ease-in w-1/4 h-1/4 p-1 sm:p-2;
   }
 
   .column-0 { 

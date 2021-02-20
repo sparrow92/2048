@@ -25,6 +25,10 @@ module.exports = {
       spacing: {
         '300': '300px',
         '500': '500px',
+      },
+
+      transitionDuration: {
+        '50': '50ms'
       }
     },
   },
