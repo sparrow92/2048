@@ -29,6 +29,18 @@ module.exports = {
 
       transitionDuration: {
         '50': '50ms'
+      },
+
+      keyframes: {
+        'bounce-in': {
+          '0%': { transform: 'scale(0)' },
+          '50%': { transform: 'scale(1.2)' },
+          '100%': { transform: 'scale(1)' },
+        }
+      },
+
+      animation: {
+        'bounce-in': 'bounce-in 0.25s',
       }
     },
   },
