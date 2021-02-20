@@ -33,7 +33,7 @@ export default {
 
 <style lang="postcss" scoped>
   .gameover__container {
-    @apply absolute inset-0 pointer-events-none text-brown-900 z-50;
+    @apply absolute -top-2 -left-2 pointer-events-none text-brown-900 z-50 w-300 h-300 sm:w-500 sm:h-500;
   }
 
   .gameover__background {

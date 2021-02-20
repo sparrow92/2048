@@ -1,6 +1,5 @@
 <template>
   <div class="gameboard">
-    <slot name="notifications"/>
     <div class="gameboard__inner">
       <slot/>
     </div>
