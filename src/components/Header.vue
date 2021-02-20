@@ -48,7 +48,7 @@ export default {
 
   methods: {
     newGame: function() {
-      this.$emit("newGame");
+      this.$emit("new-game");
     }
   }
 }

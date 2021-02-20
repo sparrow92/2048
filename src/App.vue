@@ -1,12 +1,10 @@
 <template>
   <Wrapper @up="up" @right="right" @down="down" @left="left">
-    <Header :score="value"/>
+    <Header :score="score" @new-game="newGame" />
     <Gameboard>
-      <Tile :x="x" :y="y" :value="value" />
-      <template v-slot:notifications>
-        <GameOver :visible="gameOver" :score="value" @try-again="tryAgain" />
-        <YouWin :visible="youWin" @continue-game="continueGame" />
-      </template>
+      <Tile v-for="tile in tiles" :key="tile.id" :x="tile.x" :y="tile.y" :value="tile.value" />
+      <GameOver :visible="gameOver" :score="score" @try-again="tryAgain" />
+      <YouWin :visible="youWin" @continue-game="continueGame" />
     </Gameboard>
     <Footer/>
   </Wrapper>
@@ -34,44 +32,97 @@ export default {
 
   data() {
     return {
-      x: 1,
-      y: 1,
-      value: 2,
       youWin: false,
-      gameOver: false
+      gameOver: false,
+      tiles: [],
+      score: 0,
     };
+  },
+
+  computed: {
+    popup: function () {
+      return this.gameOver || this.youWin;
+    }
   },
 
   methods: {
     up: function () {
-      --this.y
-      this.youWin = true
+      this.newTile(1);
     },
 
     down: function () {
-      ++this.y
-      this.gameOver = true
+      this.newTile(1);
     },
 
     left: function () {
-      --this.x
+      this.newTile(1);
     },
 
     right: function () {
-      ++this.x
-      this.value *= 2;
+      this.newTile(1);
+    },
+
+    newGame: function () {
+      this.gameOver = false;
+      this.youWin = false;
+      this.tiles.length = 0;
+      this.score = 0;
+      this.newTile(2);
+    },
+
+    newTile: function (i) {
+      [...Array(i)].forEach(() => {
+        if (this.tiles.length < 16) {
+          do {
+            var x = this.generateCoordinate();
+            var y = this.generateCoordinate();
+            var notNull = this.getTileValue(x, y);
+          }
+          while (notNull);
+
+          this.tiles.push({
+            x: x,
+            y: y,
+            value: this.generateValue(),
+            id: this.generateId()
+          });
+        }
+      });
+    },
+
+    getTileValue: function (x, y) {
+      const array = this.tiles.find(tile => {
+        return tile.x == x && tile.y == y 
+      });
+
+      return array ? array.value : null;
+    },
+
+    generateId: function () {
+      return Math.random().toString(36).substring(2);
+    },
+
+    generateValue: function () {
+      let number = Math.random();
+      return number < 0.9 ? 2 : 4;
+    },
+
+    generateCoordinate: function () {
+      return Math.floor(Math.random() * 4);
     },
 
     tryAgain: function () {
       this.gameOver = false;
+      this.newGame();
     },
 
     continueGame: function () {
       this.youWin = false;
     }
+  },
+
+  mounted() {
+    this.newTile(2);
   }
 }
 </script>
-
-<style lang="postcss">
-</style>
