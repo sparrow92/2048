@@ -41,25 +41,105 @@ export default {
 
   computed: {
     popup: function () {
-      return this.gameOver || this.youWin;
-    }
+      return this.gameOver || this.youWin
+    },
+
+    nextUp: function() {
+      var result = false;
+      for (var x = 0; x < 4; x++) {
+        var y = 0;
+        var row = [];
+        while (y < 4) {
+          row.push(this.getTileValue(x, y));
+          y++;
+        }
+        if (this.isMovePossible(row)) {
+          result = true;
+          break;
+        }
+      }
+      return result;
+    },
+
+    nextRight: function() {
+      var result = false;
+      for (var y = 0; y < 4; y++) {
+        var x = 3;
+        var row = [];
+        while (x >= 0) {
+          row.push(this.getTileValue(x, y));
+          x--;
+        }
+        if (this.isMovePossible(row)) {
+          result = true;
+          break;
+        }
+      }
+      return result;
+    },
+
+    nextDown: function() {
+      var result = false;
+      for (var x = 0; x < 4; x++) {
+        var y = 3;
+        var row = [];
+        while (y >= 0) {
+          row.push(this.getTileValue(x, y));
+          y--;
+        }
+        if (this.isMovePossible(row)) {
+          result = true;
+          break;
+        }
+      }
+      return result;
+    },
+
+    nextLeft: function() {
+      var result = false;
+      for (var y = 0; y < 4; y++) {
+        var x = 0;
+        var row = [];
+        while (x < 4) {
+          row.push(this.getTileValue(x, y));
+          x++;
+        }
+        if (this.isMovePossible(row)) {
+          result = true;
+          break;
+        }
+      }
+      return result;
+    },
+
+    noStep: function() {
+      return !this.nextLeft && !this.nextUp && !this.nextRight && !this.nextDown
+    },
   },
 
   methods: {
     up: function () {
-      this.newTile(1);
+      if (this.nextUp && !this.popup) {
+        this.newTile(1);
+      }
     },
 
     down: function () {
-      this.newTile(1);
+      if (this.nextDown && !this.popup) {
+        this.newTile(1);
+      }
     },
 
     left: function () {
-      this.newTile(1);
+      if (this.nextLeft && !this.popup) {
+        this.newTile(1);
+      }
     },
 
     right: function () {
-      this.newTile(1);
+      if (this.nextRight && !this.popup) {
+        this.newTile(1);
+      }
     },
 
     newGame: function () {
@@ -76,9 +156,9 @@ export default {
           do {
             var x = this.generateCoordinate();
             var y = this.generateCoordinate();
-            var notNull = this.getTileValue(x, y);
+            var isTile = this.getTileValue(x, y);
           }
-          while (notNull);
+          while (isTile);
 
           this.tiles.push({
             x: x,
@@ -90,12 +170,44 @@ export default {
       });
     },
 
+    isMovePossible: function (array) {
+      let tiles = array.filter(x => x > 0);
+
+      if (tiles.length == 0) {
+        return false;
+      }
+
+      array = array.slice(0, tiles.length);
+
+      if (array.filter(x => x == null).length > 0) {
+        return true;
+      }
+
+      if (array.length == 1) {
+        return false;
+      }
+
+      if (array.length > 1) {
+        for (var i = 1; i < array.length; i++) {
+          if (array[i] == array[i - 1] || !array[i - 1] || !array[i]) {
+            return true;
+          }
+        }
+      }
+    },
+
     getTileValue: function (x, y) {
       const array = this.tiles.find(tile => {
         return tile.x == x && tile.y == y 
       });
 
       return array ? array.value : null;
+    },
+
+    getTileIndex: function (x, y) {
+      return this.tiles.findIndex((tile) => {
+        return tile.x == x && tile.y == y
+      });
     },
 
     generateId: function () {
