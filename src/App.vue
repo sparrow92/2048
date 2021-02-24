@@ -235,6 +235,14 @@ export default {
 
   mounted() {
     this.newTile(2);
+  },
+
+  created() {
+    if (this.$workbox) {
+      this.$workbox.addEventListener("waiting", () => {
+        this.showUpdateUI = true;
+      });
+    }
   }
 }
 </script>
