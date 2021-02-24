@@ -42,7 +42,7 @@ export default {
 
 <style lang="postcss" scoped>
   .wrapper {
-    @apply min-h-screen w-screen bg-brown-200 flex items-center justify-center outline-none;
+    @apply min-h-screen w-screen bg-brown-200 flex items-center justify-center outline-none select-none;
 
     &__inner {
       @apply flex flex-col items-center w-300 sm:w-500;
