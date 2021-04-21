@@ -45,10 +45,9 @@ export default {
     },
 
     nextUp: function() {
-      var result = false;
-      for (var x = 0; x < 4; x++) {
-        var y = 0;
-        var row = [];
+      let result = false;
+      for (let x = 0; x < 4; x++) {
+        var y = 0, row = [];
         while (y < 4) {
           row.push(this.getTileValue(x, y));
           y++;
@@ -62,10 +61,9 @@ export default {
     },
 
     nextRight: function() {
-      var result = false;
-      for (var y = 0; y < 4; y++) {
-        var x = 3;
-        var row = [];
+      let result = false;
+      for (let y = 0; y < 4; y++) {
+        var x = 3, row = [];
         while (x >= 0) {
           row.push(this.getTileValue(x, y));
           x--;
@@ -79,10 +77,9 @@ export default {
     },
 
     nextDown: function() {
-      var result = false;
-      for (var x = 0; x < 4; x++) {
-        var y = 3;
-        var row = [];
+      let result = false;
+      for (let x = 0; x < 4; x++) {
+        var y = 3, row = [];
         while (y >= 0) {
           row.push(this.getTileValue(x, y));
           y--;
@@ -96,10 +93,9 @@ export default {
     },
 
     nextLeft: function() {
-      var result = false;
-      for (var y = 0; y < 4; y++) {
-        var x = 0;
-        var row = [];
+      let result = false;
+      for (let y = 0; y < 4; y++) {
+        var x = 0, row = [];
         while (x < 4) {
           row.push(this.getTileValue(x, y));
           x++;
@@ -120,24 +116,68 @@ export default {
   methods: {
     up: function () {
       if (this.nextUp && !this.popup) {
+        for (let a = 0; a < 4; a++) {
+          var n = 0, row = [];
+          while (n < 4) {
+            let value = this.getTileValue(a, n), index = this.getTileIndex(a, n);
+            if (value > 0) {
+              row.push(this.tiles[index]);
+            }
+            n++;
+          }
+          this.sortRow(row, 0, -1);
+        }
         this.newTile(1);
       }
     },
 
     down: function () {
       if (this.nextDown && !this.popup) {
+        for (let a = 0; a < 4; a++) {
+          var n = 3, row = [];
+          while (n >= 0) {
+            let value = this.getTileValue(a, n), index = this.getTileIndex(a, n);
+            if (value > 0) {
+              row.push(this.tiles[index]);
+            }
+            n--;
+          }
+          this.sortRow(row, 0, 1);
+        }
         this.newTile(1);
       }
     },
 
     left: function () {
       if (this.nextLeft && !this.popup) {
+        for (let b = 0; b < 4; b++) {
+          var n = 0, row = [];
+          while (n < 4) {
+            let value = this.getTileValue(n, b), index = this.getTileIndex(n, b);
+            if (value > 0) {
+              row.push(this.tiles[index]);
+            }
+            n++;
+          }
+          this.sortRow(row, -1, 0);
+        }
         this.newTile(1);
       }
     },
 
     right: function () {
       if (this.nextRight && !this.popup) {
+        for (let b = 0; b < 4; b++) {
+          var n = 3, row = [];
+          while (n >= 0) {
+            let value = this.getTileValue(n, b), index = this.getTileIndex(n, b);
+            if (value > 0) {
+              row.push(this.tiles[index]);
+            }
+            n--;
+          }
+          this.sortRow(row, 1, 0);
+        }
         this.newTile(1);
       }
     },
@@ -221,6 +261,68 @@ export default {
 
     generateCoordinate: function () {
       return Math.floor(Math.random() * 4);
+    },
+
+    moveTile: function (a, b, c, d) {
+      return new Promise (resolve => {
+        let index = this.getTileIndex(a, b);
+        this.tiles[index].x += c;
+        this.tiles[index].y += d;
+        resolve();
+      });
+    },
+
+    doubleTile: function (a, b, ms) {
+      setTimeout(() => {
+        let index = this.getTileIndex(a, b);
+        this.tiles[index].id = this.generateId();
+        this.tiles[index].value *= 2;
+        this.score += this.tiles[index].value;
+      }, ms);
+    },
+
+    removeTile: function (a, b, ms) {
+      setTimeout(() => {
+        let index = this.getTileIndex(a, b);
+        this.tiles.splice(index, 1);
+      }, ms);
+    },
+
+    moveAndDouble: function (a, b, c, d, ms) {
+      this.moveTile(a, b, c, d).then(
+        this.doubleTile(a + c, b + d, ms)
+      );
+    },
+
+    moveAndRemove: function (a, b, c, d, ms) {
+      this.moveTile(a, b, c, d).then(
+        this.removeTile(a + c, b + d, ms)
+      );
+    },
+
+    sortRow: function (row, vectorX, vectorY) {
+      let absX = Math.abs(vectorX),
+          absY = Math.abs(vectorY),
+          counter = (vectorX == 1 || vectorY == 1) ? 3 : 0;
+
+      for (let i = 0, line = counter; i < row.length; i++, line += -1 * (vectorY + vectorX)) {
+        var position1 = absX * row[i].x + absY * row[i].y,
+            dist1 = Math.abs(line - position1);
+
+        if (typeof row[i+1] !== 'undefined') {
+          var position2 = (absX * row[i+1].x) + (absY * row[i+1].y),
+              dist2 = Math.abs(line - position2);
+        }
+
+        if (typeof row[i+1] !== 'undefined' && row[i].value == row[i+1].value) {
+          this.moveAndRemove(row[i].x, row[i].y, vectorX * dist1, vectorY * dist1, 100);
+          this.moveAndDouble(row[i+1].x, row[i+1].y, vectorX * dist2, vectorY * dist2, 100);
+          i++;
+        }
+        else {
+          this.moveTile(row[i].x, row[i].y, vectorX * dist1, vectorY * dist1);
+        }
+      }
     },
 
     tryAgain: function () {
