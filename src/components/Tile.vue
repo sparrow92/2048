@@ -1,6 +1,6 @@
 <template>
-  <div class="tile__wrapper" :class="`column-${x} row-${y}`">
-    <div :class="[`tile tile--${value}`, { 'shine':  isShining}]">
+  <div class="tile__wrapper animate__animated animate__zoomIn" :class="`column-${x} row-${y}`">
+    <div :class="[`tile tile--${value}`, { 'shine':  isShining, 'animate-bounce-in': animated }]">
       {{ value }}
     </div>
   </div>
@@ -14,6 +14,21 @@ export default {
     value: Number
   },
 
+  data() {
+    return {
+      animated: false
+    }
+  },
+
+  watch: {
+    value: function () {
+      this.animated = true;
+      setTimeout(() => {
+        this.animated = false;
+      }, 1000);
+    }
+  },
+
   computed: {
     isShining: function() { 
       return this.value > 64 && this.value < 4048
@@ -24,7 +39,8 @@ export default {
 
 <style lang="postcss" scoped>
   .tile__wrapper {
-    @apply absolute animate-bounce-in transition-all duration-50 ease-in w-1/4 h-1/4 p-1 sm:p-2;
+    animation-duration: 200ms !important;
+    @apply absolute transition-all ease-in-out duration-100 w-1/4 h-1/4 p-1 sm:p-2;
   }
 
   .column-0 { 
@@ -60,6 +76,7 @@ export default {
   }
 
   .tile {
+    animation-duration: 250ms !important;
     @apply flex items-center justify-center h-full w-full bg-gray-1 text-white rounded text-2xl sm:text-4xl font-bold;
   }
 
