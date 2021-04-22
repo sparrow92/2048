@@ -48,7 +48,7 @@ export default {
     },
 
     largestTile: function (newValue) {
-      if (newValue === 32) {
+      if (newValue === 2048) {
         this.youWin = true;
       }
     }
