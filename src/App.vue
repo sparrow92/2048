@@ -40,9 +40,27 @@ export default {
     };
   },
 
+  watch: {
+    noStep: function (newValue) {
+      if (newValue) {
+        this.gameOver = true;
+      }
+    },
+
+    largestTile: function (newValue) {
+      if (newValue === 32) {
+        this.youWin = true;
+      }
+    }
+  },
+
   computed: {
     popup: function () {
       return this.gameOver || this.youWin
+    },
+
+    largestTile: function () {
+      return Math.max.apply(Math, this.tiles.map(element => element.value));
     },
 
     nextUp: function() {
