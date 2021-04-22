@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import Wrapper from './components/Wrapper.vue'
 import Header from './components/Header.vue'
 import Gameboard from './components/Gameboard.vue'
@@ -114,7 +115,7 @@ export default {
   },
 
   methods: {
-    up: function () {
+    up: _.throttle(function () {
       if (this.nextUp && !this.popup) {
         for (let a = 0; a < 4; a++) {
           var n = 0, row = [];
@@ -129,9 +130,9 @@ export default {
         }
         this.newTile(1);
       }
-    },
+    }, 500),
 
-    down: function () {
+    down: _.throttle(function () {
       if (this.nextDown && !this.popup) {
         for (let a = 0; a < 4; a++) {
           var n = 3, row = [];
@@ -146,9 +147,9 @@ export default {
         }
         this.newTile(1);
       }
-    },
+    }, 500),
 
-    left: function () {
+    left: _.throttle(function () {
       if (this.nextLeft && !this.popup) {
         for (let b = 0; b < 4; b++) {
           var n = 0, row = [];
@@ -163,9 +164,9 @@ export default {
         }
         this.newTile(1);
       }
-    },
+    }, 500),
 
-    right: function () {
+    right: _.throttle(function () {
       if (this.nextRight && !this.popup) {
         for (let b = 0; b < 4; b++) {
           var n = 3, row = [];
@@ -180,7 +181,7 @@ export default {
         }
         this.newTile(1);
       }
-    },
+    }, 500),
 
     newGame: function () {
       this.gameOver = false;
