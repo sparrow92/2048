@@ -272,31 +272,30 @@ export default {
       });
     },
 
-    doubleTile: function (a, b, ms) {
+    doubleTile: function (a, b) {
       setTimeout(() => {
         let index = this.getTileIndex(a, b);
-        this.tiles[index].id = this.generateId();
         this.tiles[index].value *= 2;
         this.score += this.tiles[index].value;
-      }, ms);
+      }, 100);
     },
 
-    removeTile: function (a, b, ms) {
+    removeTile: function (a, b) {
       setTimeout(() => {
         let index = this.getTileIndex(a, b);
         this.tiles.splice(index, 1);
-      }, ms);
+      }, 100);
     },
 
-    moveAndDouble: function (a, b, c, d, ms) {
+    moveAndDouble: function (a, b, c, d) {
       this.moveTile(a, b, c, d).then(
-        this.doubleTile(a + c, b + d, ms)
+        this.doubleTile(a + c, b + d)
       );
     },
 
-    moveAndRemove: function (a, b, c, d, ms) {
+    moveAndRemove: function (a, b, c, d) {
       this.moveTile(a, b, c, d).then(
-        this.removeTile(a + c, b + d, ms)
+        this.removeTile(a + c, b + d)
       );
     },
 
@@ -315,8 +314,8 @@ export default {
         }
 
         if (typeof row[i+1] !== 'undefined' && row[i].value == row[i+1].value) {
-          this.moveAndRemove(row[i].x, row[i].y, vectorX * dist1, vectorY * dist1, 100);
-          this.moveAndDouble(row[i+1].x, row[i+1].y, vectorX * dist2, vectorY * dist2, 100);
+          this.moveAndRemove(row[i].x, row[i].y, vectorX * dist1, vectorY * dist1);
+          this.moveAndDouble(row[i+1].x, row[i+1].y, vectorX * dist2, vectorY * dist2);
           i++;
         }
         else {

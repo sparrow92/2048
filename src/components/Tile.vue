@@ -21,11 +21,13 @@ export default {
   },
 
   watch: {
-    value: function () {
-      this.animated = true;
-      setTimeout(() => {
-        this.animated = false;
-      }, 1000);
+    value: function (newValue, oldValue) {
+      if (newValue > oldValue) {
+        this.animated = true;
+        setTimeout(() => {
+          this.animated = false;
+        }, 1000);
+      }
     }
   },
 
